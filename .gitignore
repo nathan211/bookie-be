@@ -1,0 +1,63 @@
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+*.a
+
+# Output of the go coverage tool, specifically when used with LiteIDE
+*.coverprofile
+
+# Project-local glide cache, RE: https://github.com/Masterminds/glide#glide-configuration
+.glide/
+
+# Code editing backup files
+*~
+
+# Folders for various build systems
+/_obj
+/_test
+
+# Output of the go coverage tool
+*.cover
+
+# Output of the go benchmarking tool
+*.bench
+
+# Go workspace file
+*.code-workspace
+
+# Dependency directories
+vendor/
+Godeps/
+
+# IDE/editor directories and files
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Dependency directories (remove the comment if you use Go modules)
+# /vendor/
+
+# Node modules (if any)
+node_modules/
+
+# Docker files
+docker-compose.override.yml
+.env
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+
+# Database
+db_data/
+
+# Build artifacts
+/build/

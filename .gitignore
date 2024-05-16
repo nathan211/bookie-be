@@ -61,3 +61,6 @@ db_data/
 
 # Build artifacts
 /build/
+
+# postgres data
+/postgres_data

@@ -1,28 +1,40 @@
 package db
 
 import (
-    "log"
-    "os"
-    "bookie-be/models"
-    "gorm.io/driver/postgres"
-    "gorm.io/gorm"
+	"bookie-be/models"
+	"log"
+	"os"
+
+	"gorm.io/driver/postgres"
+	"gorm.io/gorm"
 )
 
 var DB *gorm.DB
 
 func Init() {
-    var err error
-    dsn := "host=" + os.Getenv("DB_HOST") +
-        " user=" + os.Getenv("DB_USER") +
-        " password=" + os.Getenv("DB_PASSWORD") +
-        " dbname=" + os.Getenv("DB_NAME") +
-        " port=" + os.Getenv("DB_PORT") +
-        " sslmode=disable TimeZone=Asia/Shanghai"
-    DB, err = gorm.Open(postgres.Open(dsn), &gorm.Config{})
-    if err != nil {
-        log.Fatal("Failed to connect to database:", err)
-    }
+	var err error
 
-    // Migrate the schema
-    DB.AutoMigrate(&models.User{}, &models.Bookie{})
+	dbHost := os.Getenv("DB_HOST")
+	dbUser := os.Getenv("DB_USER")
+	dbPassword := os.Getenv("DB_PASSWORD")
+	dbName := os.Getenv("DB_NAME")
+	dbPort := os.Getenv("DB_PORT")
+
+	dsn := "host=" + dbHost +
+		" user=" + dbUser +
+		" password=" + dbPassword +
+		" dbname=" + dbName +
+		" port=" + dbPort +
+		" sslmode=disable TimeZone=Asia/Shanghai"
+
+	// Log the DSN to see if it is correctly formed
+	log.Println("DSN:", dsn)
+
+	DB, err = gorm.Open(postgres.Open(dsn), &gorm.Config{})
+	if err != nil {
+		log.Fatal("Failed to connect to database:", err)
+	}
+
+	// Migrate the schema
+	DB.AutoMigrate(&models.User{}, &models.Bookie{})
 }

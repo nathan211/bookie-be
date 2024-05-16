@@ -1,17 +1,12 @@
 package models
 
-import (
-	"time"
-
-	"gorm.io/gorm"
-)
+import "time"
 
 type Bookie struct {
-	gorm.Model
-	ID          uint `gorm:"primaryKey"`
-	BookedTime  time.Time
-	ArrivalTime time.Time
-	Status      string `gorm:"size:20"`
-	UserID      uint
-	User        User
+    ID          uint      `json:"id" gorm:"primaryKey"`
+    BookedTime  time.Time `json:"booked_time"`
+    ArrivalTime time.Time `json:"arrival_time"`
+    Status      string    `json:"status"`
+    UserID      uint      `json:"user_id"`
+    User        User      `json:"user" gorm:"foreignKey:UserID"`
 }

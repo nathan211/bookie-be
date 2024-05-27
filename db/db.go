@@ -36,5 +36,5 @@ func Init() {
 	}
 
 	// Migrate the schema
-	DB.AutoMigrate(&models.User{}, &models.Bookie{})
+	DB.AutoMigrate(&models.User{}, &models.BusinessType{}, &models.Business{})
 }

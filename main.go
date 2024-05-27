@@ -17,6 +17,4 @@ func main() {
 	db.Init()
 	r := routes.SetupRouter()
 	r.Run(":8080")
-
-	log.Fatal("Server is running...")
 }
